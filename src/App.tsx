@@ -14,7 +14,7 @@ const App = ():JSX.Element => {
     element = <RegisterCard setMenuOpen={setMenuOpen} />
   }
   return (
-    <div className='App'>
+    <div >
       {element}
     </div>
     
