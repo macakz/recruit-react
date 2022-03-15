@@ -1,5 +1,5 @@
 
-export type RegisterCardFormProps = {
+export type RegisterCardProps = {
     setMenuOpen: (active: boolean) => void;
 
 }

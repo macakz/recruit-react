@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from 'react';
-import { RegisterCardForm } from './components/Register-Card-Form/Register-Card-Form';
+import { RegisterCardForm } from './components/Register-Card/Register-Card';
 import { Menu } from './components/Menu/Menu';
 
 const App = ():JSX.Element => {
@@ -14,7 +14,10 @@ const App = ():JSX.Element => {
     element = <RegisterCardForm setMenuOpen={setMenuOpen} />
   }
   return (
-    element
+    <div className='App'>
+      {element}
+    </div>
+    
   );
 }
 
