@@ -38,8 +38,8 @@ export const Form = ({ }: Props): JSX.Element => {
                 {...register("cvc", { required: true, minLength: 3 })}
             />
             <div className="redText">
-            {errors.cvc?.type === "required" && <span>This field is required</span>}
-            {errors.cvc?.type === "minLength" && <span>Must be a valid CVC number</span>}
+                {errors.cvc?.type === "required" && <span>This field is required</span>}
+                {errors.cvc?.type === "minLength" && <span>Must be a valid CVC number</span>}
             </div>
 
             <div>Expiry</div>
@@ -50,8 +50,8 @@ export const Form = ({ }: Props): JSX.Element => {
                 {...register("expiry", { required: true, minLength: 4 })}
             />
             <div className="redText">
-            {errors.expiry?.type === "required" && <span>This field is required</span>}
-            {errors.expiry?.type === "maxLength" && <span>This field is required</span>}
+                {errors.expiry?.type === "required" && <span>This field is required</span>}
+                {errors.expiry?.type === "maxLength" && <span>This field is required</span>}
             </div>
             <br />
             <input type="submit" />
