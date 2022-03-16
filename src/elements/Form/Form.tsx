@@ -5,16 +5,25 @@ import type { FormProps as Props, InputProps } from './types'
 
 
 export const Form = ({ }: Props): JSX.Element => {
-    const { register, handleSubmit, formState: { errors } } = useForm<InputProps>();
-    const onSubmit: SubmitHandler<InputProps> = data => console.log(data);
-
     const normalizeCardNumber = (value: any) => {
         return value.replace(/\s/g, "").match(/.{1,4}/g)?.join(" ").substr(0, 19) || ""
+    }
+    const dateFormat = (value: any) => {
+        return value.replace(/\//g, "").substring(0, 2) +
+            (value.length > 3 ? '/' : '') +
+            value.replace(/\//g, "").substring(2, 4);
+    }
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<InputProps>();
+    
+    const onSubmit: SubmitHandler<InputProps> = data => {
+        console.log(data)
+        reset()
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div>Credit Card Number</div>
+            <div >Credit Card Number</div>
             <input
                 inputMode="numeric"
                 placeholder="0000 0000 0000 0000"
@@ -30,7 +39,7 @@ export const Form = ({ }: Props): JSX.Element => {
                 {errors.ccNumber?.type === "maxLength" && <span>Must be a valid credit card number</span>}
 
             </div>
-            <div>CVC</div>
+            <div className="label">CVC</div>
             <input
                 inputMode="numeric"
                 placeholder="000"
@@ -42,19 +51,23 @@ export const Form = ({ }: Props): JSX.Element => {
                 {errors.cvc?.type === "minLength" && <span>Must be a valid CVC number</span>}
             </div>
 
-            <div>Expiry</div>
+            <div className="label">Expiry</div>
             <input
                 inputMode="numeric"
                 placeholder="00/00"
                 maxLength={4}
-                {...register("expiry", { required: true, minLength: 4 })}
+                {...register("expiry", { required: true, minLength: 5 })}
+                onChange={(event) => {
+                    const { value } = event.target
+                    event.target.value = dateFormat(value)
+                }}
             />
             <div className="redText">
                 {errors.expiry?.type === "required" && <span>This field is required</span>}
-                {errors.expiry?.type === "maxLength" && <span>This field is required</span>}
+                {errors.expiry?.type === "minLength" && <span>Must be a valid expiry date</span>}
             </div>
             <br />
-            <input type="submit" />
+            <input className="btn" type="submit" />
         </form>
     )
 }

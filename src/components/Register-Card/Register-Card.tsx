@@ -9,7 +9,7 @@ export const RegisterCard = ({ setMenuOpen }: Props): JSX.Element => (
             <a onClick={() => setMenuOpen(true)}>
                 <FaBars className='icon' />
             </a>
-            RegisterCard
+            Register
         </div>
         <Form />
     </div>
