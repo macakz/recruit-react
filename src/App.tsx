@@ -13,6 +13,7 @@ const App = ():JSX.Element => {
   else{
     element = <RegisterCard setMenuOpen={setMenuOpen} />
   }
+  
   return (
     <div >
       {element}

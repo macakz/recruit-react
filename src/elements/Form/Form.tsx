@@ -1,4 +1,3 @@
-import React from "react";
 import '../../App.css';
 import { useForm, SubmitHandler } from "react-hook-form";
 import type { FormProps as Props, InputProps } from './types'
